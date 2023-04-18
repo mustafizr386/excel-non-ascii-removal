@@ -1,0 +1,20 @@
+    Dim Startrow As Long
+    Dim endrow As Long
+    Dim compare As String
+    Dim comparee  As String
+    Dim output As Variant
+    Dim addendum As String
+    addendum = CHR(34) & "test" & CHR(34)
+    Startrow = 2
+    endrow = 2018
+    compare = "B"
+    comparee = "C"
+    dump = "G"
+
+    For counter = Startrow To endrow
+        output = InStr(1, Range(compare & counter), Range(comparee & counter), vbTextCompare)
+        If Range(comparee & counter) <> "" And output = 0 Then
+            Range(dump & counter).Value = Range(compare & counter) & vbNewLine & addendum & Range(comparee & counter)
+        End If
+    Next counter
+    MsgBox ("task finished")
